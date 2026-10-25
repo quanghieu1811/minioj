@@ -1,0 +1,6 @@
+{
+  "name": "VNOJ Mini - Hệ Thống Chấm Bài Online Thật",
+  "description": "Hệ thống Online Judge trực tuyến với cơ chế biên dịch và chấm bài thực tế hỗ trợ C++, C, Python 3 và JavaScript với đầy đủ phán quyết AC, WA, TLE, RTE, CE.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
