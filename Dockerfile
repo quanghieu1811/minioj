@@ -1,22 +1,22 @@
-# Sử dụng môi trường Node.js để chạy Next.js
-FROM node:18-alpine
+# Sử dụng môi trường ảo của Bun để chạy Next.js siêu nhanh
+FROM oven/bun:1-alpine
 
-# Cài đặt thêm các trình biên dịch để chấm bài (C++, Python)
+# BẮT BUỘC: Cài thêm các trình biên dịch để phục vụ việc chấm bài (C++ và Python)
 RUN apk update && apk add --no-cache g++ python3 make
 
 WORKDIR /app
 
-# Copy file cấu hình và cài đặt thư viện cho web
-COPY package*.json ./
-RUN npm install
+# Sao chép file quản lý thư viện và tiến hành cài đặt
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 
-# Copy toàn bộ code từ AI Studio sang
+# Sao chép toàn bộ mã nguồn dự án sang
 COPY . .
 
 # Build dự án Next.js
-RUN npm run build
+RUN bun run build
 
 EXPOSE 3000
 
-# Chạy ứng dụng Next.js ở chế độ Production 24/7
-CMD ["npm", "start"]
+# Khởi chạy dự án Next.js 24/7 trên Render
+CMD ["bun", "run", "start"]
